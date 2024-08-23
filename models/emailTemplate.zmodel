@@ -1,0 +1,18 @@
+
+ import "./user.zmodel"  
+ import "./email.zmodel"  
+
+model EmailTemplate {
+
+    id                String        @id @default(uuid())  
+    name            String          
+    subject      String          
+    body            String          
+    userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+
+emailsAsTemplate  Email[]      @relation("template")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

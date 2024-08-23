@@ -1,0 +1,15 @@
+
+ import "./email.zmodel"  
+
+model EmailRecipient {
+
+    id                String        @id @default(uuid())  
+    recipientEmail  String          
+    status        String          
+    emailId      String?          
+    email          Email?          @relation(fields: [emailId], references: [id], name:"email")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
